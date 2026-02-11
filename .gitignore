@@ -154,8 +154,6 @@ cython_debug/
 #.idea/
 
 data/persist/logs
-!data/persist/blueprints/
-!data/persist/manifest.json
 backup/*
 flaskkey
 discordwebhookurl

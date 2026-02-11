@@ -458,10 +458,10 @@ def AdminPlayer(player):
         game = DecryptGameData(player["game"])
         if player["multiplayer_name"] == None:
             player["multiplayer_name"] = game["MultiplayerPlayerName"]
-    except Exception:
+    except Exception as e:
         Log(
             "admin",
-            "Failed to decrypt player game data for player: " + player["username"],
+            f"Failed to decrypt player game data for player:  + player{'username'}: {e}",
         )
         game = None
 
