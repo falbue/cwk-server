@@ -45,7 +45,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-DB_PATH = os.getenv("DB_PATH")
+DB_PATH = os.getenv("DB_PATH", "instance")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--port", type=int, default=5000)
@@ -1880,10 +1880,10 @@ if __name__ == "__main__":
         with open("data/persist/android_version.txt", "w") as f:
             f.write("1.0.0")
 
+    with app.app_context():
+        db.create_all()
     app.run(debug=args.debug, port=args.port)
 
-with app.app_context():
-    db.create_all()
 
 scheduler_thread = threading.Thread(target=run_scheduler)
 scheduler_thread.start()
